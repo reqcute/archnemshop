@@ -183,7 +183,7 @@ to{
 }
 }
 
-/* SECOND PAGE - 2 ROWS LAYOUT */
+/* SECOND PAGE */
 #second-page {
     min-height:100vh;
     width:100%;
@@ -195,13 +195,11 @@ to{
     align-items:center;
 }
 
-/* TWO ROW GRID */
+/* GRID */
 .boxes-grid-two-rows {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: auto;
     gap: 40px 30px;
-    justify-content: center;
     width: 90%;
     max-width: 1200px;
     margin-bottom: 50px;
@@ -219,8 +217,6 @@ to{
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    position: relative;
 }
 
 .box:hover { transform: translateY(-8px); }
@@ -228,32 +224,22 @@ to{
 .box h3 {
     font-size: 1.5rem;
     font-weight: 900;
-    letter-spacing: .1rem;
     color: var(--accent-color);
-    text-shadow:
-        0 0 6px rgba(100,255,218,0.6),
-        0 0 10px rgba(100,255,218,0.4),
-        0 0 18px rgba(100,255,218,0.3);
     margin-bottom: 20px;
-    animation: glowPulse 3s infinite alternate;
 }
 
-.box img.product-image {
+.box img {
     width: 140px;
-    height: auto;
     margin-bottom: 20px;
 }
 
 .purchase-btn {
-    display: inline-block;
     padding: 12px 30px;
-    font-size: 1rem;
     background: #2a7a5e;
-    color: #ffffff;
-    font-weight: 700;
+    color: #fff;
     text-decoration: none;
     border-radius: 8px;
-    transition: background .3s;
+    font-weight: 700;
 }
 
 .purchase-btn:hover { background: #3dbb96; }
@@ -262,23 +248,10 @@ to{
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #ff3b3b;
-    color: #fff;
-    font-size: 0.85rem;
-    font-weight: 700;
+    background: red;
     padding: 5px 8px;
     border-radius: 6px;
-    text-transform: uppercase;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-@media(max-width:900px){
-    .boxes-grid-two-rows { grid-template-columns: repeat(2, 1fr); gap: 25px 20px; }
-    .box{width: 160px; padding: 25px 20px;}
-    .box h3{font-size: 1.3rem;}
-    .box img.product-image{width: 120px;}
-    .purchase-btn{padding: 10px 25px; font-size: 0.9rem;}
-    .new-badge{font-size:0.7rem; padding:4px 7px;}
+    font-size: .8rem;
 }
 </style>
 </head>
@@ -288,7 +261,7 @@ to{
 <!-- NAVBAR -->
 <nav class="navbar">
 <ul class="nav-links">
-  <li><a href="https://discord.gg/FDmgmwRK" target="_blank">DISCORD</a></li>
+  <li><a href="https://discord.gg/br63xgj67J" target="_blank">DISCORD</a></li>
   <li><a href="MATRIX-Prices.html">MATRIX</a></li>
   <li><a href="MATCHA-Prices.html">MATCHA</a></li>
   <li><a href="UE-Prices.html">UE</a></li>
@@ -305,7 +278,7 @@ to{
     <h1>ARCHNEM FIGS</h1>
     <div class="logo-row">
         <img src="https://cdn3.emoji.gg/emojis/69266-archnemesis.png" class="main-image">
-        <a href="https://discord.gg/FDmgmwRK" target="_blank">
+        <a href="https://discord.gg/br63xgj67J" target="_blank">
           <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-color-icon.png" class="main-image-small">
         </a>
     </div>
@@ -315,49 +288,6 @@ to{
     <span>Scroll</span>
     <div class="scroll-arrow"></div>
   </a>
-</div>
-
-<!-- SECOND PAGE -->
-<div id="second-page">
-  <div class="boxes-grid-two-rows">
-
-    <!-- MATRIX -->
-    <div class="box">
-      <h3 class="glow-title">MATRIX</h3>
-      <img src="https://static.wikitide.net/robloxrivalswiki/thumb/b/bc/The_Archnemesis_rank_icon.webp/120px-The_Archnemesis_rank_icon.webp.png" class="product-image">
-      <a href="MATRIX-Prices.html" class="purchase-btn">CLICK HERE</a>
-    </div>
-
-    <!-- MATCHA -->
-    <div class="box">
-      <h3 class="glow-title">MATCHA</h3>
-      <img src="https://static.wikitide.net/robloxrivalswiki/thumb/b/bc/The_Archnemesis_rank_icon.webp/120px-The_Archnemesis_rank_icon.webp.png" class="product-image">
-      <a href="MATCHA-Prices.html" class="purchase-btn">CLICK HERE</a>
-    </div>
-
-    <!-- UE -->
-    <div class="box">
-      <h3 class="glow-title">UE</h3>
-      <img src="https://static.wikitide.net/robloxrivalswiki/thumb/b/bc/The_Archnemesis_rank_icon.webp/120px-The_Archnemesis_rank_icon.webp.png" class="product-image">
-      <a href="UE-Prices.html" class="purchase-btn">CLICK HERE</a>
-    </div>
-
-    <!-- KHOOK -->
-    <div class="box">
-      <h3 class="glow-title">KHOOK</h3>
-      <span class="new-badge">NEW</span>
-      <img src="https://static.wikitide.net/robloxrivalswiki/thumb/b/bc/The_Archnemesis_rank_icon.webp/120px-The_Archnemesis_rank_icon.webp.png" class="product-image">
-      <a href="KHOOK-Prices.html" class="purchase-btn">CLICK HERE</a>
-    </div>
-
-    <!-- BUNDLES -->
-    <div class="box">
-      <h3 class="glow-title">BUNDLES</h3>
-      <img src="https://static.wikitide.net/robloxrivalswiki/thumb/b/bc/The_Archnemesis_rank_icon.webp/120px-The_Archnemesis_rank_icon.webp.png" class="product-image">
-      <a href="BUNDLES-Prices.html" class="purchase-btn">CLICK HERE</a>
-    </div>
-
-  </div>
 </div>
 
 </body>
