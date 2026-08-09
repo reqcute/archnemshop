@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Archnem Shop</title>
+<link rel="icon" href="https://cdn3.emoji.gg/emojis/69266-archnemesis.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,sans-serif;
+}
+body{
+    height:100vh;
+    overflow:hidden;
+    color:white;
+    background:
+    radial-gradient(circle at top,rgba(26,255,223,.25),transparent 40%),
+    linear-gradient(135deg,#050707,#071919,#0b2927,#061111);
+    background-size:300% 300%;
+    animation:bgMove 12s ease infinite;
+}
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+canvas{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+/* NAV */
+nav{
+    height:90px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 70px;
+}
+.logo{
+    font-size:32px;
+    font-weight:800;
+    color:#7ffff1;
+    text-shadow:0 0 10px #25e8d5,0 0 35px #25e8d5;
+    text-decoration:none;
+    transition:.3s;
+}
+.logo:hover{
+    text-shadow:0 0 15px #25e8d5,0 0 50px #25e8d5;
+}
+.links{
+    display:flex;
+    gap:30px;
+    align-items:center;
+}
+.links a{
+    text-decoration:none;
+    color:white;
+    font-weight:600;
+    font-size:36px;
+    transition:.3s;
+    display:flex;
+    align-items:center;
+    line-height:1;
+}
+.links a:hover{
+    transform:scale(1.15);
+    filter:drop-shadow(0 0 12px #26f0db);
+}
+.discord-icon{
+    width:53px;
+    height:53px;
+    transition:.3s;
+}
+.discord-icon:hover{
+    transform:scale(1.15);
+    filter:drop-shadow(0 0 12px #5865F2);
+}
+/* CONFIGS */
+.configs{
+    height:calc(100vh - 90px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-top:45px;
+}
+.title{
+    font-size:55px;
+    font-weight:800;
+    color:#7ffff1;
+    text-shadow:0 0 10px #25e8d5,0 0 25px #25e8d5;
+    margin-bottom:60px;
+}
+.configGrid{
+    width:90%;
+    max-width:1500px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:35px;
+}
+.configCard{
+    height:230px;
+    border-radius:20px;
+    background:rgba(0,255,220,.08);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(36,255,229,.25);
+}
+.configCard:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 0 50px rgba(36,255,229,.8);
+}
+.configCard img{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+    filter:drop-shadow(0 0 12px rgba(37,232,213,0.7));
+}
+@media(max-width:1000px){
+    .configGrid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+@media(max-width:600px){
+    .configGrid{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+<body>
+<canvas id="snow"></canvas>
+
+<nav>
+    <a href="index.html" class="logo">Archnem Shop</a>
+    <div class="links">
+        <a href="products.html">🛒</a>
+        <a href="#">
+            <img src="https://pngimg.com/uploads/discord/discord_PNG3.png" alt="Discord" class="discord-icon">
+        </a>
+    </div>
+</nav>
+
+<section class="configs">
+    <h1 class="title">Configs</h1>
+    <div class="configGrid">
+        <div class="configCard">
+            <img src="https://imagedelivery.net/HL_Fwm__tlvUGLZF2p74xw/42b414aa-7c12-494a-0cdd-ff87327dcc00/public" alt="Matrix">
+        </div>
+        <div class="configCard">
+            <img src="https://user-generated-content.komerza.com/b5e64ad6-edc0-4d3c-9d9e-20d997833ef5.png" alt="Matcha">
+        </div>
+        <div class="configCard">
+            <img src="https://user-generated-content.komerza.com/2ea39bb0-052f-44d8-a8eb-fe93f379cf29.png" alt="UE">
+        </div>
+        <div class="configCard">
+            <img src="https://user-generated-content.komerza.com/52b8f301-e7a5-4cd9-9a47-b1e67952f59d.webp" alt="Khook">
+        </div>
+    </div>
+</section>
+
+<script>
+const canvas = document.getElementById("snow");
+const ctx = canvas.getContext("2d");
+
+function resize(){
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
+
+let snow = [];
+for(let i = 0; i < 220; i++){
+    snow.push({
+        x: Math.random() * innerWidth,
+        y: Math.random() * innerHeight,
+        size: Math.random() * 3 + 0.5,
+        speed: Math.random() * 0.45 + 0.15,
+        drift: (Math.random() - 0.5) * 0.5,
+        opacity: Math.random() * 0.45 + 0.25
+    });
+}
+
+function animate(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    snow.forEach(s => {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(90,255,235,${s.opacity})`;
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = "#2ffff0";
+        ctx.fill();
+
+        s.y += s.speed;
+        s.x += Math.sin(s.y * 0.01) * 0.2 + s.drift;
+
+        if(s.y > canvas.height + 10){
+            s.y = -10;
+            s.x = Math.random() * canvas.width;
+        }
+    });
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>
